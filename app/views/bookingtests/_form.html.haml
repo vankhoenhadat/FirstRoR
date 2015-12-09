@@ -1,0 +1,62 @@
+= form_for @bookingtest do |f|
+  - if @bookingtest.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@bookingtest.errors.count, "error")} prohibited this bookingtest from being saved:"
+      %ul
+        - @bookingtest.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :customer_name
+    = f.text_field :customer_name
+  .field
+    = f.label :hotel_name
+    = f.text_field :hotel_name
+  .field
+    = f.label :night_number
+    = f.text_field :night_number
+  .field
+    = f.label :from_date
+    = f.text_field :from_date
+  .field
+    = f.label :to_date
+    = f.text_field :to_date
+  .field
+    = f.label :active
+    = f.text_field :active
+  .actions
+    = f.submit 'Save'
+
+  %table.table.table-striped
+    %thead
+      %tr
+        %th Room name
+        %th descriptions
+        %th Minrate
+        %th
+        %th
+        %th
+    %tbody
+    - @bookingtest.Room.each do |room|
+      %tr
+        %td
+          %input{'type': 'text', 'name': 'bookingtest[Room][][name]', 'value': room.name}
+        %td
+          %input{'type': 'text', 'name': 'bookingtest[Room][][descriptions]', 'value': room.descriptions}
+        %td
+          %input{'type': 'text', 'name': 'bookingtest[Room][][minrate]', 'value': room.minrate}
+        %td
+          %input{'type': 'hidden', 'name': 'bookingtest[Room][][_id]', 'value': room._id}
+        %td
+        %td
+    %tr
+      %td
+        %input{'type': 'text', 'name': 'bookingtest[Room][][name]', 'value': 'new name'}
+      %td
+        %input{'type': 'text', 'name': 'bookingtest[Room][][descriptions]', 'value': ' new'}
+      %td
+        %input{'type': 'text', 'name': 'bookingtest[Room][][minrate]', 'value': '1'}
+      %td
+        %input{'type': 'hidden', 'name': 'bookingtest[Room][][_id]', 'value': nil}
+      %td
+      %td

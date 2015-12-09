@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @room.name
+%p
+  %b Descriptions:
+  = @room.descriptions
+%p
+  %b Minrate:
+  = @room.minrate
+%p
+  %b Active:
+  = @room.active
+
+= link_to 'Edit', edit_room_path(@room)
+\|
+= link_to 'Back', rooms_path

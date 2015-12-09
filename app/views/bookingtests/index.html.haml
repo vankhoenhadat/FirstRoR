@@ -1,0 +1,33 @@
+%h1 Listing bookingtests
+
+%table.table.table-striped
+  %thead
+    %tr
+      %th Customer name
+      %th Hotel name
+      %th Night number
+      %th From date
+      %th To date
+      %th Active
+      %th
+      %th
+      %th
+
+  %tbody
+    - @bookingtests.each do |bookingtest|
+      %tr
+        %td= bookingtest.customer_name
+        %td= bookingtest.hotel_name
+        %td= bookingtest.night_number
+        %td= bookingtest.from_date
+        %td= bookingtest.to_date
+        %td= bookingtest.active
+        %td= link_to 'Show', bookingtest
+        %td= link_to 'Edit', edit_bookingtest_path(bookingtest)
+        %td= link_to 'Destroy', bookingtest, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+=paginate @bookingtests
+%br
+
+= link_to 'New Bookingtest', new_bookingtest_path

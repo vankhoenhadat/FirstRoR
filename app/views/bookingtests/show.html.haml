@@ -1,0 +1,24 @@
+%p#notice= notice
+
+%p
+  %b Customer name:
+  = @bookingtest.customer_name
+%p
+  %b Hotel name:
+  = @bookingtest.hotel_name
+%p
+  %b Night number:
+  = @bookingtest.night_number
+%p
+  %b From date:
+  = @bookingtest.from_date
+%p
+  %b To date:
+  = @bookingtest.to_date
+%p
+  %b Active:
+  = @bookingtest.active
+
+= link_to 'Edit', edit_bookingtest_path(@bookingtest)
+\|
+= link_to 'Back', bookingtests_path

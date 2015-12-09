@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  customer_name: MyString
+  hotel_name: MyString
+  night_number: 
+  from_date: 
+  to_date: 
+  active: 
+
+two:
+  customer_name: MyString
+  hotel_name: MyString
+  night_number: 
+  from_date: 
+  to_date: 
+  active: 
