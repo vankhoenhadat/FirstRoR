@@ -19,8 +19,8 @@
         %td= bookingtest.customer_name
         %td= bookingtest.hotel_name
         %td= bookingtest.night_number
-        %td= bookingtest.from_date
-        %td= bookingtest.to_date
+        %td= bookingtest.from_date.strftime("%d/%m/%Y %H:%M:%S") if bookingtest.from_date?
+        %td= bookingtest.to_date.strftime("%d/%m/%Y %H:%M:%S")  if bookingtest.to_date?
         %td= bookingtest.active
         %td= link_to 'Show', bookingtest
         %td= link_to 'Edit', edit_bookingtest_path(bookingtest)

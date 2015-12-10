@@ -18,9 +18,6 @@ class BookingtestsController < ApplicationController
 
   # GET /bookingtests/1/edit
   def edit
-    ssss= @bookingtest
-    a= ssss.Room[0].name
-    a
   end
 
   # POST /bookingtests

@@ -1,4 +1,8 @@
 %h1 New room
+-#- unless @error.nil? || @error.count > 0
+- @error.each do |err|
+  %p.error
+    = err
 
 = render 'form'
 

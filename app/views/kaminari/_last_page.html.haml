@@ -5,5 +5,7 @@
 -#    total_pages:   total number of pages
 -#    per_page:      number of items to fetch per page
 -#    remote:        data-remote
-%li.last
-  = link_to_unless current_page.last?, t('views.pagination.last').html_safe, url, :remote => remote
+%li{:class => "last#{' disabled' if current_page.last?}"}
+  %a{:href => "#{'javascript:;' if current_page.last?} #{url unless current_page.last?}"}
+    %i.fa.fa-angle-double-right
+  -#= link_to_unless current_page.last?, t('views.pagination.last').html_safe, url, :remote => remote

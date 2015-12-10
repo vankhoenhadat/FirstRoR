@@ -1,5 +1,6 @@
 class RoomsController < ApplicationController
-  before_action :set_room, only: [:show, :edit, :update, :destroy]
+
+  before_action :set_room, only: [:show, :edit, :update, :destroy]    
 
   # GET /rooms
   def index
@@ -13,6 +14,8 @@ class RoomsController < ApplicationController
   # GET /rooms/new
   def new
     @room = Room.new
+    @error =[]
+    # @error.push("sdfsdf")
   end
 
   # GET /rooms/1/edit
@@ -21,11 +24,25 @@ class RoomsController < ApplicationController
 
   # POST /rooms
   def create
-    @room = Room.new(room_params)
+    # @room = Room.new(room_params)
+    @room = Room.new
+    @room.name = params[:room][:name]
+    @room.descriptions = params[:room][:descriptions]
+    @room.minrate = params[:room][:minrate]
 
-    if @room.save
-      redirect_to @room, notice: 'Room was successfully created.'
+    validator = RoomValidator.new
+    # validator.valid?(@room)
+    # validator.validate!(@room) # => # => Veto::InvalidEntity, ["name is not present", "..."]
+    # validator.errors.full_messages # => ["first name is not present", "..."]
+
+    if validator.valid?(@room)
+      if @room.save
+        redirect_to @room, notice: 'Room was successfully created.'
+      else
+        render :new
+      end
     else
+      @error = validator.errors.full_messages
       render :new
     end
   end
