@@ -9,6 +9,12 @@ class BookingtestsController < ApplicationController
 
   # GET /bookingtests/1
   def show
+    email= params[:email]
+    password= params[:password]
+    subject= params[:subject]
+    issue_type= params[:issue_type]
+    priority= params[:priority]
+    description= params[:description]
   end
 
   # GET /bookingtests/new
